@@ -119,6 +119,7 @@ var listTestMap = map[string]string{
 	"/deis/database/user":            "user",
 	"/deis/database/pass":            "pass",
 	"/deis/services/key":             "value",
+	"/deis/services/with-space":      "ok",
 	"/deis/services/notaservice/foo": "bar",
 	"/deis/services/srv1/node1":      "10.244.1.1:80",
 	"/deis/services/srv1/node2":      "10.244.1.2:80",
@@ -132,7 +133,7 @@ func TestList(t *testing.T) {
 	for k, v := range listTestMap {
 		s.Set(k, v)
 	}
-	want := []string{"key", "notaservice", "srv1", "srv2"}
+	want := []string{"key", "notaservice", "srv1", "srv2", "with-space"}
 	paths := []string{
 		"/deis/services",
 		"/deis/services/",
@@ -162,7 +163,7 @@ func TestListDir(t *testing.T) {
 	for k, v := range listTestMap {
 		s.Set(k, v)
 	}
-	want := []string{"notaservice", "srv1", "srv2"}
+	want := []string{"key", "notaservice", "srv1", "srv2", "with-space"}
 	paths := []string{
 		"/deis/services",
 		"/deis/services/",
